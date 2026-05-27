@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>LinuxDemo.Linux</RootNamespace>
+    <AssemblyName>LinuxDemo.Linux</AssemblyName>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <EnableDefaultMauiItems>false</EnableDefaultMauiItems>
+  </PropertyGroup>
+
+  <!--
+    The GTK4 backend for .NET MAUI lives in the dotnet/maui-labs repo:
+    https://github.com/dotnet/maui-labs/tree/main/platforms/Linux.Gtk4
+
+    On Linux you need GTK4 (and WebKitGTK for Blazor Hybrid):
+      Debian / Ubuntu : sudo apt install libgtk-4-dev libwebkitgtk-6.0-dev
+      Fedora          : sudo dnf install gtk4-devel webkitgtk6.0-devel
+  -->
+
+  <ItemGroup>
+    <!-- MAUI 10 no longer auto-adds Microsoft.Maui.Controls when UseMaui=true. -->
+    <!-- Floated to match the version pulled in transitively by Platform.Maui.Linux.Gtk4 (>= 10.0.31). -->
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.*" />
+
+    <PackageReference Include="Platform.Maui.Linux.Gtk4" Version="0.6.*-*" />
+    <PackageReference Include="Platform.Maui.Linux.Gtk4.Essentials" Version="0.6.*-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Share everything (App.xaml, AppShell, MainPage, ViewModels, ...) from the main MAUI project. -->
+    <ProjectReference Include="..\LinuxDemo\LinuxDemo.csproj"
+                      SetTargetFramework="TargetFramework=net10.0" />
+  </ItemGroup>
+
+</Project>

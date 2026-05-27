@@ -1,0 +1,26 @@
+# Build outputs
+bin/
+obj/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userprefs
+
+# Rider / VS
+*.lscache
+*.SdkResolver.*.proj.Backup.tmp
+
+# Logs
+*.log
+*.binlog
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Other samples in this folder — kept in their own repos
+/AIDemo/
